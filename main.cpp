@@ -80,7 +80,7 @@ int main(){
                 break;
             }
             case 'l':{
-                active-=1;
+                active=(4+active-1)%4;
                 break;
             }
             case 'q':{
