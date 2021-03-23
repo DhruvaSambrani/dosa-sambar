@@ -2,6 +2,6 @@
 Some yaml
 ---
 
-- [ ] No check
-- [ ] Checked
-- [x] Hello!
+- [x] No check
+- [x] Checked
+- [x] Hi!

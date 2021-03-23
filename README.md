@@ -31,3 +31,7 @@ The Markdown based, git synced, TUI checklist app with vim keybindings
 - Your favorite text editor
 - A private git repo
 
+# Demo
+
+<video src="dosas_demo.mp4" width=400px height=300px></video>
+
