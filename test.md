@@ -1,6 +1,7 @@
 ---
-Some yaml that needs to be safe
+Some yaml
 ---
 
-- [x] New one
-- [x] Hi!
+- [ ] No check
+- [ ] Checked
+- [x] Hello!

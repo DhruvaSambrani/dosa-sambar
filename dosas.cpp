@@ -51,7 +51,7 @@ public:
     static void remove(vector<MdCheckBox> &mdarr, int pos){
         mdarr.erase(mdarr.begin()+pos);
     }
-    static void parsefile(char filename[], vector<MdCheckBox> &mdarr){
+    static void parsefile(char *filename, vector<MdCheckBox> &mdarr){
         ifstream ifile(filename);
         string str, yamlstr;
         string yamlsep = "---";
@@ -71,7 +71,7 @@ public:
         MdCheckBox::yamlblock = yamlstr;
     }
 
-    static void writefile(char filename[], vector<MdCheckBox> &mdarr){
+    static void writefile(char *filename, vector<MdCheckBox> &mdarr){
         ofstream ofile(filename);
         ofile << MdCheckBox::yamlblock;
         ofile << endl;
@@ -109,14 +109,25 @@ void init(){
     keypad(stdscr, TRUE);
 }
 
-int main(){
+int main(int argc, char *argv[]){
     init();
     int active=0;
     bool st=true;
     vector<MdCheckBox> mdarr;
-    char fn[] = "test.md";
+    char *fn;
     string git_commit = "git add . && git commit -q -a -m \"";
     string quote = "\"";
+    if(argc == 2){
+        fn = argv[1]; 
+        addstr("Parsing ");
+        addstr(fn);
+        getch();
+    } else {
+        addstr("Incorrect call. Run `dosas filename`");
+        getch();
+        endwin();
+        return 1;
+    }
     MdCheckBox::parsefile(fn, mdarr);
     while(st){
         clear();
