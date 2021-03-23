@@ -33,5 +33,5 @@ The Markdown based, git synced, TUI checklist app with vim keybindings
 
 # Demo
 
-<video src="dosas_demo.mp4" width=400px height=300px></video>
+![dosas demo](dosas_demo.gif)
 
