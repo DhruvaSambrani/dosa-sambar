@@ -115,6 +115,8 @@ int main(){
     bool st=true;
     vector<MdCheckBox> mdarr;
     char fn[] = "test.md";
+    string git_commit = "git add . && git commit -a -m \"";
+    string quote = "\"";
     MdCheckBox::parsefile(fn, mdarr);
     while(st){
         clear();
@@ -152,7 +154,11 @@ int main(){
                 break;
             }
             case 'g':{
-                system("git add . && git commit -m \"test\"");
+                system("git diff");
+                addstr("\n\nCommit Message: ");
+                system((git_commit+getinput().c_str()+quote).c_str());
+                getch();
+                break;
             }
             case 'q':{
                 st = false;
