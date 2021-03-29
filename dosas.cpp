@@ -175,7 +175,7 @@ int main(int argc, char *argv[]){
                 MdCheckBox::writefile(fn, mdarr);
                 break;
             }
-            case 'b': {
+            /*case 'b': {
                 MdCheckBox::writefile(fn, mdarr);
                 system("git diff");
                 addstr("\n\nAny Key to Continue: ");
@@ -194,7 +194,7 @@ int main(int argc, char *argv[]){
                 system("git push -q");
                 getch();
                 break;
-            }
+            }*/
             case 'q':{
                 st = false;
                 break;
