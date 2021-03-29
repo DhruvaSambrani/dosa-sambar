@@ -119,14 +119,25 @@ int main(int argc, char *argv[]){
     string quote = "\"";
     if(argc == 2){
         fn = argv[1]; 
-        addstr("Parsing ");
+        addstr("Parsed ");
         addstr(fn);
+        addstr("\n Hit any key to continue!");
         getch();
     } else {
-        addstr("Incorrect call. Run `dosas filename`");
-        getch();
-        endwin();
-        return 1;
+        char *envNotes = getenv("SAMBAR");
+        if(envNotes != NULL) {
+            fn = envNotes;
+            addstr("Parsed ");
+            addstr(fn);
+            addstr(" from envvar.\n");
+            addstr("Hit any key to continue!");
+            getch();
+        } else {
+            addstr("Incorrect call. Run `dosas filename`, or set $SAMBAR to the notes file.");
+            getch();
+            endwin();
+            return 1;
+        }
     }
     MdCheckBox::parsefile(fn, mdarr);
     while(st){
@@ -164,10 +175,23 @@ int main(int argc, char *argv[]){
                 MdCheckBox::writefile(fn, mdarr);
                 break;
             }
-            case 'g':{
+            case 'b': {
+                MdCheckBox::writefile(fn, mdarr);
                 system("git diff");
-                addstr("\n\nCommit Message: ");
+                addstr("\n\nAny Key to Continue: ");
+                getch();
+                break;
+            }
+            case 'g':{
+                MdCheckBox::writefile(fn, mdarr);
+                system("git status --porcelein");
+                addstr("\n\nCommit Message (Leave Blank to cancel): ");
                 system((git_commit+getinput().c_str()+quote).c_str());
+                getch();
+                break;
+            }
+            case 'p':{
+                system("git push -q");
                 getch();
                 break;
             }
