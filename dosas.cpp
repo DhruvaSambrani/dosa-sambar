@@ -162,7 +162,9 @@ int main(int argc, char *argv[]){
                 break;
             }
             case 'd':{
-                MdCheckBox::remove(mdarr, active);
+                addstr("\nDeleting, sure? [y/any-other]");
+                if(getch()=='y')
+                    MdCheckBox::remove(mdarr, active);
                 break;
             }
             case 'i':{
